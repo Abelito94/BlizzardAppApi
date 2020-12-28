@@ -5,6 +5,9 @@ import './plugins/bootstrapVue'
 // Vue Font-Awesome
 import './plugins/fontAwesome'
 
+// Custom directives
+import './directives/index'
+
 import App from './App.vue'
 import router from './router'
 import store from './store'

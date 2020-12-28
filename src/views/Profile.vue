@@ -1,8 +1,10 @@
-<template>
-  <div>
+ <template>
+  <div class="profile-view">
     <BaseLoading v-if="isLoading" />
+
     <template v-if="profileData !== null">
       <MainBlock :profile-data="profileData" />
+      <ArtisansBlock :artisans-data="artisansData" />
     </template>
   </div>
 </template>
@@ -12,18 +14,32 @@ import BaseLoading from '../components/BaseLoading'
 import setError from '../mixins/setErrors'
 import { getApiAccount } from '../api/search'
 import MainBlock from './MainBlock/MainBlock'
+import ArtisansBlock from './ArtisansBlock/ArtisansBlock'
 
 export default {
   name: 'ProfileView',
   mixins: [setError],
   components: {
     BaseLoading,
-    MainBlock
+    MainBlock,
+    ArtisansBlock
   },
   data () {
     return {
       isLoading: false,
       profileData: null
+    }
+  },
+  computed: {
+    artisansData () {
+      return {
+        blacksmith: this.profileData.blacksmith,
+        blacksmithHardcore: this.profileData.blacksmithHardcore,
+        jeweler: this.profileData.jeweler,
+        jewelerHardcore: this.profileData.jewelerHardcore,
+        mystic: this.profileData.mystic,
+        mysticHardcore: this.profileData.mysticHardcore
+      }
     }
   },
   created () {

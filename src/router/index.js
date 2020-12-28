@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '../views/Home'
 import Profile from '../views/Profile'
-import Hero from '../views/Hero'
+import Hero from '../views/Hero/Hero'
 import About from '../views/About'
 
 Vue.use(Router)
