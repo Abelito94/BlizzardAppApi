@@ -1,9 +1,13 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Router from 'vue-router'
+import Home from '../views/Home'
+import Profile from '../views/Profile'
+import Hero from '../views/Hero'
+import About from '../views/About'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
+// Configuración rutas
 const routes = [
   {
     path: '/',
@@ -11,16 +15,32 @@ const routes = [
     component: Home
   },
   {
+    path: '/region/:region/profile/:battleTag',
+    name: 'Profile',
+    component: Profile
+  },
+  {
+    path: '/region/:region/profile/:battleTag/hero/:heroId',
+    name: 'Hero',
+    component: Hero
+  },
+  {
     path: '/about',
     name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: About
+  },
+  {
+    path: '/error',
+    name: 'Error',
+    component: Error
+  },
+  {
+    path: '*',
+    redirect: { name: 'Home' }
   }
 ]
 
-const router = new VueRouter({
+const router = new Router({
   routes
 })
 
